@@ -1,0 +1,2 @@
+profileFilepath=../profiles/savedProfiles.json
+profileStorageType=FILE

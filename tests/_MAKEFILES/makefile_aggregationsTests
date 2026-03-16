@@ -1,0 +1,39 @@
+###RUN THE FOLLOWING COMMANDS TO EXECUTE THIS MAKEFILE:
+### make build -f makefile_aggregationsTests
+
+SHELL := /bin/bash # Set shell
+
+# Target directory
+BUILD_TARGET_DIR = build_aggregationsTests
+
+SRC = $(shell find ../../* -type f -name "*.cpp" \
+        -not -path "../../tests/*" \
+        -not -path "../../include/rapidjson/*" \
+        -not -path "../../src/application/cli/*" \
+        -not -path "../../src/import/DEMO*") \
+      $(shell find ../* -type f -name "aggregationsTestRunner.cpp") \
+      $(shell find ../* -type f -name "aggregationsTests.cpp") \
+      $(shell find ../* -type f -name "testUtils.cpp")
+
+#The compiler to be used
+COMPILER = g++ 
+
+# Compiler options
+COMPILER_FLAGS = -std=c++14 -pthread
+
+# Executable name
+OBJ_NAME = $(BUILD_TARGET_DIR)/aggregationsTests
+
+
+# Rules
+prepare:
+	mkdir -p $(BUILD_TARGET_DIR)
+
+build : prepare
+	# Building executable : ${OBJ_NAME}
+	$(COMPILER) $(COMPILER_FLAGS) $(SRC) -o $(OBJ_NAME)
+	
+
+debug : prepare
+	# Building executable : ${OBJ_NAME} with debug symbols.
+	$(COMPILER) $(COMPILER_FLAGS) -g $(SRC) -o $(OBJ_NAME)

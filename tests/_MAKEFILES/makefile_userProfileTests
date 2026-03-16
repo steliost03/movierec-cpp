@@ -1,0 +1,46 @@
+###RUN THE FOLLOWING COMMANDS TO EXECUTE THIS MAKEFILE:
+### make build -f makefile_userProfileTests
+
+SHELL := /bin/bash # Set shell
+
+# Target directory
+BUILD_TARGET_DIR = build_userProfileTests
+
+# The files to include
+INCLUDED_FILES = \
+	$(shell find ../../src/main -name "*.cpp") \
+	$(shell find ../../src/data -name "*.cpp") \
+	$(shell find ../../src/export -name "*.cpp") \
+	$(shell find ../../src/import -name "*.cpp") \
+	$(shell find ../../src/utils -name "*.cpp") \
+	$(shell find ../../src/logging -name "*.cpp") \
+	../testUtils.cpp \
+	$(shell find ../userProfileTests -name "*.cpp")
+
+# The files to exclude
+EXCLUDED_FILES = ../../src/import/DEMO.cpp
+
+# The files to compile
+SRC = $(filter-out $(EXCLUDED_FILES), $(INCLUDED_FILES))
+
+# The compiler to be used
+COMPILER = g++ 
+
+# Compiler options
+COMPILER_FLAGS = -std=c++14
+
+# Executable name
+OBJ_NAME = $(BUILD_TARGET_DIR)/userProfileTests
+
+
+# Rules
+prepare:
+	mkdir -p $(BUILD_TARGET_DIR)
+
+build: prepare
+	# Building executable : $(OBJ_NAME)
+	$(COMPILER) $(COMPILER_FLAGS) $(SRC) -o $(OBJ_NAME)
+
+debug: prepare
+	# Building executable : $(OBJ_NAME) with debug symbols.
+	$(COMPILER) $(COMPILER_FLAGS) -g $(SRC) -o $(OBJ_NAME)

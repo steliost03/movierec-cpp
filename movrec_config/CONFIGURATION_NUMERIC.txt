@@ -1,0 +1,11 @@
+maxNeighbors=5
+neighborWeightThreshold=0.5
+recommendationCount=5
+maxWatchedMovieCountUsedInItemBasedMethod=20
+maxWatchedMovieCountUsedInUserBasedMethod=100
+significanceWeightingFactor=50
+stringSimilarityMethod=1
+similarityThreshold=0.7
+minimumCommonElementsForUserNeighbors=1
+minimumCommonElementsForMovieNeighbors=1
+minimumRatingCountForAggregations=15

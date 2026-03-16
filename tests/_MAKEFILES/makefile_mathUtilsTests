@@ -1,0 +1,49 @@
+###RUN THE FOLLOWING COMMANDS TO EXECUTE THIS MAKEFILE:
+### make build -f makefile_mathUtilsTests
+
+SHELL := /bin/bash # Set shell
+
+# Target directory
+BUILD_TARGET_DIR = build_mathUtilsTests
+
+#The files to include
+INCLUDED_FILES = $(shell find ../../src/application/configuration -name "*.cpp") \
+	$(shell find ../../src/data -name "*.cpp") \
+	$(shell find ../../src/exceptions -name "*.cpp") \
+	$(shell find ../../src/export -name "*.cpp") \
+	$(shell find ../../src/import -name "*.cpp") \
+	$(shell find ../../src/logging -name "*.cpp") \
+	$(shell find ../../src/main -name "*.cpp") \
+	$(shell find ../../src/math -name "*.cpp") \
+	$(shell find ../../src/utils -name "*.cpp") \
+	../testUtils.cpp \
+	$(shell find ../mathUtilsTests -name "*.cpp")
+
+#The files to exclude
+EXCLUDED_FILES = ../../src/import/DEMO.cpp ../../src/import/DEMO_CONFIG.h ../../src/import/DEMO_DEPENDENCIES.h
+
+# The files to compile
+SRC = $(filter-out $(EXCLUDED_FILES), $(INCLUDED_FILES))
+
+#The compiler to be used
+COMPILER = g++ 
+
+# Compiler options
+COMPILER_FLAGS = -std=c++14
+
+# Executable name
+OBJ_NAME = $(BUILD_TARGET_DIR)/mathUtilsTests
+
+
+# Rules
+prepare:
+	mkdir -p $(BUILD_TARGET_DIR)
+
+build : prepare
+	# Building executable : ${OBJ_NAME}
+	$(COMPILER) $(COMPILER_FLAGS) $(SRC) -o $(OBJ_NAME)
+	
+
+debug : prepare
+	# Building executable : ${OBJ_NAME} with debug symbols.
+	$(COMPILER) $(COMPILER_FLAGS) -g $(SRC) -o $(OBJ_NAME)

@@ -1,0 +1,13 @@
+movieNameMaxLength=175
+tagNameMaxLength=175
+genreNameMaxLength=20
+maxGenreCount=15
+maxTagsPerUser=20
+userEntriesReallocFactor=1.1
+tagsReallocFactor=1.5
+automaticMultithread=1
+multithreadParseRatingsEnabled=1
+multithreadParseOtherEnabled=0
+multithreadSearchEnabled=1
+defaultThreadcount=4
+

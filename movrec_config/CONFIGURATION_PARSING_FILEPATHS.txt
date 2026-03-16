@@ -1,0 +1,4 @@
+moviesFileDefaultPath=""
+ratingsFileDefaultPath=""
+tagEntriesFileDefaultPath=""
+tagIdsFileDefaultPath=""

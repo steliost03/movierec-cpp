@@ -1,0 +1,3 @@
+recommendationLogLevel=5
+parsingLogLevel=4
+dataProceduresLogLevel=4
